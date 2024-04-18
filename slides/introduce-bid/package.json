@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "slidev --open",
-    "build": "slidev build --out ../../dist/introduce-bid",
+    "build": "slidev build --base /introduce-bid --out ../../dist/introduce-bid",
     "export": "slidev export"
   }
 }
