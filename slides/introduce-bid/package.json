@@ -1,0 +1,10 @@
+{
+  "name": "introduce-bid",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build --out ../../dist/introduce-bid",
+    "export": "slidev export"
+  }
+}
