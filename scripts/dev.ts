@@ -9,5 +9,5 @@ import $ from "jsr:@david/dax@0.40.0";
 
 // TODO: $.selectが2つ以上の選択肢がないと起動しないため、後ほどコメントアウトを外す
 // $.cd(`${Deno.cwd()}/slides/${slidePaths[selectedPathPosition]}`)
-$.cd(`${Deno.cwd()}/slides/introduce-bid`)
-await $`pnpm dev`
+$.cd(`${Deno.cwd()}/slides/introduce-bid`);
+await $`pnpm dev`;

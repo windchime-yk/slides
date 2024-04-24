@@ -9,4 +9,4 @@ import $ from "jsr:@david/dax@0.40.0";
 
 // TODO: $.selectが2つ以上の選択肢がないと起動しないため、後ほどコメントアウトを外す
 // await $`pnpm live-server dist/${slidePaths[selectedPathPosition]}`
-await $`pnpm live-server dist/introduce-bid`
+await $`pnpm live-server dist/introduce-bid`;
