@@ -8,7 +8,8 @@
     "dev": "deno run --allow-run=pnpm --allow-read --allow-env scripts/dev.ts",
     "build": "rimraf dist && pnpm -r build",
     "preview": "deno run --allow-run=pnpm scripts/preview.ts",
-    "export": "pnpm -r export"
+    "export": "pnpm -r export",
+    "fmt": "deno fmt --ignore=README.md,*/**/*.md"
   },
   "dependencies": {
     "@slidev/cli": "^0.49.0-beta.4",
