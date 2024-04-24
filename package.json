@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create-slide": "deno run --allow-run=pnpm,deno --allow-write --allow-read --allow-env scripts/create.ts",
     "dev": "deno run --allow-run=pnpm --allow-read --allow-env scripts/dev.ts",
     "build": "rimraf dist && pnpm -r build",
     "preview": "deno run --allow-run=pnpm scripts/preview.ts",
