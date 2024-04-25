@@ -88,7 +88,7 @@ CSVやTSVというデータ形式、ジャンル名や品詞が設定できる�
 - 普通名詞だけでも、Googleは名詞でmacOS日本語入力システムは普通名詞
 - 各IMEの品詞がどれくらい統一できるか表を作る必要があった
 
-![Google日本語入力やmacOS日本語入力システム、Microsoft IMEの品詞の名付け方の違いを表した表](static/name-sheet.png)
+![Google日本語入力やmacOS日本語入力システム、Microsoft IMEの品詞の名付け方の違いを表した表](/name-sheet.png)
 
 ---
 layout: two-cols
