@@ -1,16 +1,10 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
-# some information about your slides, markdown enabled
-title: Welcome to Slidev
+slidev: true
+download: true
+title: DenoでIMEユーザー辞書を統一的に出力するツールを作った
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  toranoana.deno #16で発表するLT資料です。
+  bidという、IMEユーザー辞書を統一するプロジェクトについて話しています。
 # apply any unocss classes to the current slide
 class: text-center
 # https://sli.dev/custom/highlighters.html
@@ -24,614 +18,239 @@ transition: slide-left
 mdc: true
 ---
 
-# Welcome to Slide
+# DenoでIMEユーザー辞書を統一的に出力するツールを作った
+toranoana.deno #16 (2024/05/15)
 
-Presentation slides for developers
+---
+transition: fade-out
+---
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+# 自己紹介
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
+WhyKと言います。
+
+## 普段
+色んな会社でフロントエンドを書く仕事をしています。  
+休日はコードを書いたりお茶を飲んでいます。
+
+## 最近嬉しかったこと
+『狼と香辛料』が再アニメ化したこと。
+
+---
+transition: fade-out
+---
+
+# はじめに
+- Denoで作ったものの紹介なのですが、Denoらしい話はあんまり出てきません
+- 以降のスライドで会社的にIMEと呼んでいないものも、ここではIMEとしてまとめて呼びます
+
+---
+transition: fade-out
+---
+
+# アジェンダ
+
+1. 作ろうと思った動機
+2. IMEユーザー辞書の現況
+3. 作ったもの
+4. 想定利用者
+5. 出力の構造
+6. 今後の展望
+
+---
+transition: fade-out
+---
+
+# 作ろうと思った動機
+
+- 個人的に所属している小規模グループが、大量の造語を抱えている
+- 誤字しやすい造語もあるので、それを誤字しない仕組みが欲しかった
+- 誤字検知ツールも提供しているが、あまり普及していない
+- 文字変換の段階で介入すれば、誤字がしにくくなると考えた
+
+## Denoを使った理由
+- 環境が既に整えられているので、そこに悩む必要がない
+- 標準ライブラリが豊富
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+- ユーザー辞書以前には誤字検知ツールもグループ内に出していたが、手間がかかる上に、メンバーが能動的に訪れる必要がありました
+- 誤字検知ツールだとそこまで普及しなかったので、文字の変換段階に手をいれることで誤字を減らそうと考えました
+- 所属している小規模グループはエンジニアではない人がほとんどなので、エンジニア以外でも扱えるようにしたい思惑も作る後押しになりました
+
+## 次スライドへの導入
+- 作るにあたって、主要なIMEのユーザー辞書について調べました
+- 調べたのはGoogleやApple、Microsoftの3社です
+
+## 補足
+- 個人的に所属している小規模グループ＝シェアードワールドを抱える同人サークル
 -->
 
 ---
 transition: fade-out
 ---
 
-# What is Slidev?
+# IMEユーザー辞書の現況
+## 辞書フォーマットは統一されていない
+- テキストファイルのデータがTSVかCSVか
+- 項目の順番や、品詞が登録できるかどうか
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+## 特に品詞が統一されていない
+- Google日本語入力は、設定変更も品詞に組み込んでいる
+- 普通名詞だけでも、Googleは名詞でmacOS日本語入力システムは普通名詞とバラバラ
+- 各IMEの品詞がどれくらい統一できるか表を作る必要があった
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+![Google日本語入力やmacOS日本語入力システム、Microsoft IMEの品詞の名付け方の違いを表した表](/name-sheet.png)
 
 <!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
+- 調べた結果として、辞書フォーマットが全然統一されていないことがわかりました
+- テキストファイルの中身がTSVかCSVか、また項目順番や品詞登録が可能か、というものがあります
+- Google日本語入力の設定変更は、サジェストのみに表示する設定や、使いたくない変換結果を候補から除外する『抑制単語』という設定の2つがあります
 -->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
-
----
-transition: slide-up
-level: 2
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-## Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
 
 ---
 layout: two-cols
-layoutClass: gap-16
+transition: fade-out
 ---
 
-# Table of contents
+# 作ったもの
+## bid（ビド）
+build IME dictionaryの略
 
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
+- 現状ではCLIのみ
+- GitHub ActionsなどCI/CDツールを使って半自動化できる
+- CSV / JSONファイルでの入力に対応
+- 統一された品詞
+- 各IMEに適した辞書ファイルを出力
+- リポジトリ内にExcelテンプレートもある
 
 ::right::
 
-<Toc v-click minDepth="1" maxDepth="2"></Toc>
+<div class="mt-15" />
 
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover![^1]
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
+## 対応しているIME
+- Google日本語入力
+- Microsoft IME
+- macOS日本語入力システム（iCloud経由でiOSなども含む）
+- GBoard
+- ATOK（Microsoft IMEのユーザー辞書取り込み）
 
 <!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
+- 作ったツールの名前はビドと言います。あるいは単純にビーアイディーとも読みます
+- 右側に記載されているIMEは動作確認済みです
 -->
 
 ---
-level: 2
+transition: fade-out
 ---
 
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
+# 想定利用者
+- 造語を多く持つ組織
+- 複数のIMEを使う人
+- ユーザー辞書をエイリアス代わりにしている人
 
 <!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
+## 造語を多く持つ組織
+- 私が所属してるグループのような組織
+- 対外的に造語を使うときに、誤字を防ぎやすくなる
 
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
+## 複数のIMEを使う人
+- 端末によってIMEが違うとユーザー辞書管理も大変
+- 少しは楽になるかも
+
+## ユーザー辞書をエイリアス代わりにしている人
+- 複数IMEと同じように辞書管理が楽になるかも
 -->
 
 ---
-class: px-20
+layout: two-cols
+transition: fade-out
 ---
 
-# Themes
+# 出力の構造
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn More](https://sli.dev/guide/animations#click-animations)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
+```mermaid {scale: 0.35, alt: 'A simple sequence diagram'}
 sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
+  participant user as ユーザー
+  participant cli as CLI
+  participant core as コア機能
+
+  user ->> cli: JSONないしCSVをファイルで渡す
+  cli ->> core: ファイルからデータを抜き出して渡す
+  core ->> core: ファイル拡張子を確認
+  break ファイルが.jsonや.csv以外の場合
+    core -->> cli: `FileTypeError`を返却
+    cli -->> user: ファイル形式エラーとして表示 
+  end
+
+  core ->> core: ファイルデータをJSONに変換
+
+  break JSONデータに想定外のプロパティが含まれていた場合
+    core -->> cli: `DataPropertyError`を返却
+    cli -->> user: データ形式エラーとして表示 
+  end
+
+  loop
+    core ->> core: JSONデータを各IMEのテキストデータに整形
+    core ->> core: テキストデータをファイルに出力
+  end
+
+  core -->> cli: ファイルを圧縮し、圧縮ファイルを返却
+  cli -->> user: 実行時のディレクトリに圧縮ファイルを作成
 ```
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+::right::
 
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
+<div class="mt-15" />
 
-```plantuml {scale: 0.7}
-@startuml
+- コア機能には一部を除いてCLIに依存しない機能群が入っている
+- CSVのJSON変換は`std/csv/parse`を利用
+- ファイルの作成には`Deno.writeFile`と`node:buffer`を利用
+  - Microsoft IMEの辞書ファイルのエンコーディングがUTF-16LEのため
 
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
+<!--
+- CLI依存は圧縮ファイル作成で、`x/zip`を使っていますが実装で各OSのzipコマンドを叩いているので、`jsr:@zip-js/zip-js`に移行予定です
+- `std/csv/parse`はJSONへの変換までやってくれるのでありがたい存在です
+- Web標準の[`TextEncoder`](https://encoding.spec.whatwg.org/#interface-textencoder)はUTF-8しか対応していないため、それ以外も対応している`node:buffer`を使いました
+- DenoのNode互換性のおかげで解決した部分です
+-->
 
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
 
 ---
-foo: bar
-dragPos:
-  square: 691,33,167,_,-16
+transition: fade-out
 ---
 
-# Draggable Elements
+# 今後の展望
+- Webサイトを作りたい
+- Webアプリを作りたい
+- Googleスプレッドシートと直接連携できればもっと良い
+- 他のIMEへの対応
+  - **日本で使われているすべてのIMEに対応したい**
+  - データが足りないので、Issueお待ちしています
+- JSRへの公開
 
-Double-click on the draggable elements to edit their positions.
+<!--
+## Webサイトを作りたい
+- ExcelファイルのテンプレートをインストールするためにGitHubに行くのは面倒なはず
+- Webサイトのリンクからダウンロードできるようにしたい
 
-<br>
+## Webアプリを作りたい
+- 現在の作業フローだと間にWebエンジニアが1回挟まるので、そこをなくしたい
+- なるべく、ダウンロードしたユーザーが出力したファイルを編集せずに使えるようにしたい
+- ファイルをどういう形でダウンロードさせるのかを検討しているので、まだ時間はかかりそう
 
-###### Directive Usage
+## 他のIMEへの対応
+- 将来的には日本以外のIMEも対応したいが、現状は日本にフォーカスしている
 
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
+## JSRへの公開
+- CLI以外の公開も考えてモノレポにしたいので、まだ公開できていない
 
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <carbon:arrow-up />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="671,205,253,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
-  </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
----
-src: ./pages/multiple-entries.md
-hide: false
----
+## Issue / PR歓迎しています
+- まだまだ発展途上のモジュール
+- ぜひ触ってみて、Issueなどをいただけると嬉しいです
+-->
 
 ---
-
-# Monaco Editor
-
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
-
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
-
----
-layout: center
-class: text-center
+class: flex justify-center items-center
 ---
 
-# Learn More
-
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+# ありがとうございました
