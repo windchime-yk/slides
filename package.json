@@ -5,8 +5,8 @@
   "main": "index.js",
   "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
   "scripts": {
-    "create-slide": "deno run --allow-run=pnpm,deno --allow-write --allow-read --allow-env scripts/create.ts",
-    "dev": "deno run --allow-run=pnpm --allow-read --allow-env scripts/dev.ts",
+    "create-slide": "deno run --allow-run=pnpm,deno --allow-write --allow-read --allow-env --no-lock scripts/create.ts",
+    "dev": "deno run --allow-run=pnpm --allow-read --allow-env --no-lock scripts/dev.ts",
     "build": "rimraf dist && pnpm -r build && tsx index.tsx",
     "preview": "live-server dist/index.html",
     "export": "pnpm -r export",
