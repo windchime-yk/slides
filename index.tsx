@@ -21,8 +21,6 @@ const getSlideName = () => {
   return dirs;
 };
 
-console.log(getSlideName());
-
 const jsx = () => (
   <html>
     <head>
