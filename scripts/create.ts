@@ -2,6 +2,7 @@ import $ from "jsr:@david/dax@0.40.0";
 import chalk from "npm:chalk@5.3.0";
 
 const projectName = await $.prompt("プロジェクト名");
+const slideTitle = await $.prompt("スライドタイトル");
 const successLog = (message: string, isBreak: boolean = false) =>
   $.log(`${isBreak ? "\n" : ""}${chalk.green("✔")} ${message}`);
 
@@ -27,6 +28,7 @@ $.logGroupEnd();
 $.logGroup("package.jsonの修正と依存関係のインストール");
 const packageJsonTemplate = {
   "name": projectName,
+  "description": slideTitle,
   "type": "module",
   "private": true,
   "scripts": {

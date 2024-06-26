@@ -1,5 +1,6 @@
 {
   "name": "introduce-bid",
+  "description": "DenoでIMEユーザー辞書を統一的に出力するツールを作った",
   "type": "module",
   "private": true,
   "scripts": {
