@@ -53,7 +53,7 @@ transition: slide-left
 
 ---
 layout: image-right
-image: /ofetch-exports-wintercg.png
+image: ./ofetch-exports-wintercg.png
 transition: slide-left
 ---
 
