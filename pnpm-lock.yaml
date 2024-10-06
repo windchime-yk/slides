@@ -45,6 +45,8 @@ importers:
 
   slides/introduce-bid: {}
 
+  slides/wdc2024-miror: {}
+
 packages:
 
   '@ampproject/remapping@2.3.0':
