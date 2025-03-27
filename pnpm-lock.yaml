@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@slidev/cli':
         specifier: ^0.50.0
-        version: 0.50.0(@babel/parser@7.26.3)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.17.24)(@vue/compiler-sfc@3.5.13)(playwright-chromium@1.51.0)(postcss@8.4.49)(rollup@4.29.1)(tsx@4.19.3)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)
+        version: 0.50.0(@babel/parser@7.26.3)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.17.24)(@vue/compiler-sfc@3.5.13)(playwright-chromium@1.51.1)(postcss@8.4.49)(rollup@4.29.1)(tsx@4.19.3)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)
       '@slidev/theme-default':
         specifier: latest
         version: 0.25.0
@@ -35,7 +35,7 @@ importers:
         version: 1.2.2
       playwright-chromium:
         specifier: ^1.43.1
-        version: 1.51.0
+        version: 1.51.1
       rimraf:
         specifier: ^5.0.5
         version: 5.0.10
@@ -1811,10 +1811,6 @@ packages:
   destr@2.0.3:
     resolution: {integrity: sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==}
 
-  destroy@1.2.0:
-    resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
-    engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
-
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
 
@@ -2035,9 +2031,9 @@ packages:
   framesync@6.1.2:
     resolution: {integrity: sha512-jBTqhX6KaQVDyus8muwZbBeGGP0XgujBRbQ7gM7BRdS3CadCZIHiawyzYLnafYcvZIh5j8WE7cxZKFn7dXhu9g==}
 
-  fresh@0.5.2:
-    resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
-    engines: {node: '>= 0.6'}
+  fresh@2.0.0:
+    resolution: {integrity: sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==}
+    engines: {node: '>= 0.8'}
 
   from@0.1.7:
     resolution: {integrity: sha512-twe20eF1OxVxp/ML/kq2p1uc6KvFK/+vs8WjEbeKmV2He22MKm7YF2ANIt+EOqhJ5L3K/SuuPhk0hWQDjOM23g==}
@@ -2696,8 +2692,16 @@ packages:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
 
+  mime-db@1.54.0:
+    resolution: {integrity: sha512-aU5EJuIN2WDemCcAp2vFBfp/m4EAhWJnUNSSw0ixs7/kXbd6Pg64EmwJkNdFhB8aWt1sH2CTXrLxo/iAGV3oPQ==}
+    engines: {node: '>= 0.6'}
+
   mime-types@2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
+    engines: {node: '>= 0.6'}
+
+  mime-types@3.0.1:
+    resolution: {integrity: sha512-xRc4oEhT6eaBpU1XF7AjpOFD+xQmXNB5OVKwp4tqCuBpHLS/ZbBDrc07mYTDqVMg6PfxUjjNp85O6Cd2Z/5HWA==}
     engines: {node: '>= 0.6'}
 
   mimic-fn@4.0.0:
@@ -2955,13 +2959,13 @@ packages:
   plantuml-encoder@1.4.0:
     resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
 
-  playwright-chromium@1.51.0:
-    resolution: {integrity: sha512-vvTfgpnpy/OHzszS6jtRxvltC0J3x2Eko925FciIC0IN3KC1fg76veqV9AVWIasR+JTq9ZQh9V5Yqz8DPl38Lg==}
+  playwright-chromium@1.51.1:
+    resolution: {integrity: sha512-IQpN8lgv/fx++WRxT8ITZylDwYAamd3Fv5H9g2AWsicp0N829L1oXHziK/6l9h/TMxioSTqc4ifPiZLS8nITxw==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright-core@1.51.0:
-    resolution: {integrity: sha512-x47yPE3Zwhlil7wlNU/iktF7t2r/URR3VLbH6EknJd/04Qc/PSJ0EY3CMXipmglLG+zyRxW6HNo2EGbKLHPWMg==}
+  playwright-core@1.51.1:
+    resolution: {integrity: sha512-/crRMj8+j/Nq5s8QcvegseuyeZPxpQCZb6HNk3Sos3BlZyAknRjoyJPFWkpNn8v0+P3WiwqFF8P+zQo4eqiNuw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3182,8 +3186,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  send@1.1.0:
-    resolution: {integrity: sha512-v67WcEouB5GxbTWL/4NeToqcZiAWEq90N888fczVArY8A79J0L4FD7vj5hm3eUMua5EpoQ59wa/oovY6TLvRUA==}
+  send@1.2.0:
+    resolution: {integrity: sha512-uaW0WwXKpL9blXE2o0bRhoL2EGXIrZxQ2ZQ4mgcfoBxdFmQold+qWsD2jLrfZ0trjKL6vOw0j//eAwcALFjKSw==}
     engines: {node: '>= 18'}
 
   serve-index@1.9.1:
@@ -4614,7 +4618,7 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0':
     optional: true
 
-  '@slidev/cli@0.50.0(@babel/parser@7.26.3)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.17.24)(@vue/compiler-sfc@3.5.13)(playwright-chromium@1.51.0)(postcss@8.4.49)(rollup@4.29.1)(tsx@4.19.3)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)':
+  '@slidev/cli@0.50.0(@babel/parser@7.26.3)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.17.24)(@vue/compiler-sfc@3.5.13)(playwright-chromium@1.51.1)(postcss@8.4.49)(rollup@4.29.1)(tsx@4.19.3)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)':
     dependencies:
       '@antfu/ni': 0.23.2
       '@antfu/utils': 0.7.10
@@ -4687,7 +4691,7 @@ snapshots:
       yaml: 2.6.1
       yargs: 17.7.2
     optionalDependencies:
-      playwright-chromium: 1.51.0
+      playwright-chromium: 1.51.1
     transitivePeerDependencies:
       - '@babel/parser'
       - '@nuxt/kit'
@@ -6014,8 +6018,6 @@ snapshots:
 
   destr@2.0.3: {}
 
-  destroy@1.2.0: {}
-
   devlop@1.1.0:
     dependencies:
       dequal: 2.0.3
@@ -6301,7 +6303,7 @@ snapshots:
     dependencies:
       tslib: 2.4.0
 
-  fresh@0.5.2: {}
+  fresh@2.0.0: {}
 
   from@0.1.7: {}
 
@@ -6767,7 +6769,7 @@ snapshots:
       object-assign: 4.1.1
       opn: 6.0.0
       proxy-middleware: 0.15.0
-      send: 1.1.0
+      send: 1.2.0
       serve-index: 1.9.1
     transitivePeerDependencies:
       - supports-color
@@ -7145,9 +7147,15 @@ snapshots:
 
   mime-db@1.52.0: {}
 
+  mime-db@1.54.0: {}
+
   mime-types@2.1.35:
     dependencies:
       mime-db: 1.52.0
+
+  mime-types@3.0.1:
+    dependencies:
+      mime-db: 1.54.0
 
   mimic-fn@4.0.0:
     optional: true
@@ -7399,11 +7407,11 @@ snapshots:
 
   plantuml-encoder@1.4.0: {}
 
-  playwright-chromium@1.51.0:
+  playwright-chromium@1.51.1:
     dependencies:
-      playwright-core: 1.51.0
+      playwright-core: 1.51.1
 
-  playwright-core@1.51.0: {}
+  playwright-core@1.51.1: {}
 
   points-on-curve@0.2.0: {}
 
@@ -7628,16 +7636,15 @@ snapshots:
 
   semver@7.6.3: {}
 
-  send@1.1.0:
+  send@1.2.0:
     dependencies:
       debug: 4.4.0
-      destroy: 1.2.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
-      fresh: 0.5.2
+      fresh: 2.0.0
       http-errors: 2.0.0
-      mime-types: 2.1.35
+      mime-types: 3.0.1
       ms: 2.1.3
       on-finished: 2.4.1
       range-parser: 1.2.1
