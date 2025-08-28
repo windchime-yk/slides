@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@slidev/cli':
         specifier: ^0.50.0
-        version: 0.50.0(@babel/parser@7.28.0)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.19.10)(@vue/compiler-sfc@3.5.18)(playwright-chromium@1.54.2)(postcss@8.5.6)(rollup@4.29.1)(tsx@4.20.4)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)
+        version: 0.50.0(@babel/parser@7.28.0)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.19.10)(@vue/compiler-sfc@3.5.18)(playwright-chromium@1.55.0)(postcss@8.5.6)(rollup@4.29.1)(tsx@4.20.4)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)
       '@slidev/theme-default':
         specifier: latest
         version: 0.25.0
@@ -22,7 +22,7 @@ importers:
         version: 10.27.0
       preact-render-to-string:
         specifier: ^6.5.5
-        version: 6.5.13(preact@10.27.0)
+        version: 6.6.1(preact@10.27.0)
       vue:
         specifier: ^3.4.22
         version: 3.5.18(typescript@5.6.3)
@@ -35,7 +35,7 @@ importers:
         version: 1.2.2
       playwright-chromium:
         specifier: ^1.43.1
-        version: 1.54.2
+        version: 1.55.0
       rimraf:
         specifier: ^5.0.5
         version: 5.0.10
@@ -2966,13 +2966,13 @@ packages:
   plantuml-encoder@1.4.0:
     resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
 
-  playwright-chromium@1.54.2:
-    resolution: {integrity: sha512-8ytI6xNjB//5zWSZUvOvn+N9xkXw6GXiDuBePOejcDiyUmzl5R5rvAU7MTl6h633sS3JVmlCS10EhYCt4Crzsg==}
+  playwright-chromium@1.55.0:
+    resolution: {integrity: sha512-6eInUmPoVZP+COQbXdEqorJTOU3xLOaUhZReZFYtEReR7WMo5iS3/bf4p+xZuFZlSeq1bvbdpujXxUGPCyti/w==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright-core@1.54.2:
-    resolution: {integrity: sha512-n5r4HFbMmWsB4twG7tJLDN9gmBUeSPcsBZiWSE4DnYz9mJMAFqr2ID7+eGC9kpEnxExJ1epttwR59LEWCk8mtA==}
+  playwright-core@1.55.0:
+    resolution: {integrity: sha512-GvZs4vU3U5ro2nZpeiwyb0zuFaqb9sUiAJuyrWpcGouD8y9/HLgGbNRjIph7zU9D3hnPaisMl9zG9CgFi/biIg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3006,10 +3006,10 @@ packages:
   pptxgenjs@3.12.0:
     resolution: {integrity: sha512-ZozkYKWb1MoPR4ucw3/aFYlHkVIJxo9czikEclcUVnS4Iw/M+r+TEwdlB3fyAWO9JY1USxJDt0Y0/r15IR/RUA==}
 
-  preact-render-to-string@6.5.13:
-    resolution: {integrity: sha512-iGPd+hKPMFKsfpR2vL4kJ6ZPcFIoWZEcBf0Dpm3zOpdVvj77aY8RlLiQji5OMrngEyaxGogeakTb54uS2FvA6w==}
+  preact-render-to-string@6.6.1:
+    resolution: {integrity: sha512-IIMfXRjmbSP9QmG18WJLQa4Z4yx3J0VC9QN5q9z2XYlWSzFlJ+bSm/AyLyyV/YFwjof1OXFX2Mz6Ao60LXudJg==}
     peerDependencies:
-      preact: '>=10'
+      preact: '>=10 || >= 11.0.0-0'
 
   preact@10.27.0:
     resolution: {integrity: sha512-/DTYoB6mwwgPytiqQTh/7SFRL98ZdiD8Sk8zIUVOxtwq4oWcwrcd1uno9fE/zZmUaUrFNYzbH14CPebOz9tZQw==}
@@ -4625,7 +4625,7 @@ snapshots:
   '@sindresorhus/merge-streams@2.3.0':
     optional: true
 
-  '@slidev/cli@0.50.0(@babel/parser@7.28.0)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.19.10)(@vue/compiler-sfc@3.5.18)(playwright-chromium@1.54.2)(postcss@8.5.6)(rollup@4.29.1)(tsx@4.20.4)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)':
+  '@slidev/cli@0.50.0(@babel/parser@7.28.0)(@nuxt/kit@3.13.1(rollup@4.29.1)(webpack-sources@3.2.3))(@types/markdown-it@14.1.2)(@types/node@20.19.10)(@vue/compiler-sfc@3.5.18)(playwright-chromium@1.55.0)(postcss@8.5.6)(rollup@4.29.1)(tsx@4.20.4)(vue-template-compiler@2.7.16)(webpack-sources@3.2.3)':
     dependencies:
       '@antfu/ni': 0.23.2
       '@antfu/utils': 0.7.10
@@ -4698,7 +4698,7 @@ snapshots:
       yaml: 2.6.1
       yargs: 17.7.2
     optionalDependencies:
-      playwright-chromium: 1.54.2
+      playwright-chromium: 1.55.0
     transitivePeerDependencies:
       - '@babel/parser'
       - '@nuxt/kit'
@@ -7415,11 +7415,11 @@ snapshots:
 
   plantuml-encoder@1.4.0: {}
 
-  playwright-chromium@1.54.2:
+  playwright-chromium@1.55.0:
     dependencies:
-      playwright-core: 1.54.2
+      playwright-core: 1.55.0
 
-  playwright-core@1.54.2: {}
+  playwright-core@1.55.0: {}
 
   points-on-curve@0.2.0: {}
 
@@ -7460,7 +7460,7 @@ snapshots:
       image-size: 1.1.1
       jszip: 3.10.1
 
-  preact-render-to-string@6.5.13(preact@10.27.0):
+  preact-render-to-string@6.6.1(preact@10.27.0):
     dependencies:
       preact: 10.27.0
 
