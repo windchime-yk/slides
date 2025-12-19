@@ -22,7 +22,7 @@ importers:
         version: 10.28.0
       preact-render-to-string:
         specifier: ^6.5.5
-        version: 6.6.3(preact@10.28.0)
+        version: 6.6.4(preact@10.28.0)
       vue:
         specifier: ^3.4.22
         version: 3.5.25(typescript@5.6.3)
@@ -3020,8 +3020,8 @@ packages:
   pptxgenjs@3.12.0:
     resolution: {integrity: sha512-ZozkYKWb1MoPR4ucw3/aFYlHkVIJxo9czikEclcUVnS4Iw/M+r+TEwdlB3fyAWO9JY1USxJDt0Y0/r15IR/RUA==}
 
-  preact-render-to-string@6.6.3:
-    resolution: {integrity: sha512-7oHG7jzjriqsFPkSPiPnzrQ0GcxFm6wOkYWNdStK5Ks9YlWSQQXKGBRAX4nKDdqX7HAQuRvI4pZNZMycK4WwDw==}
+  preact-render-to-string@6.6.4:
+    resolution: {integrity: sha512-Bn6eQZ5SQ5loVEcC/mZmKT7HzO5Z/+vYzxfE/W2N468oSoNMJVdFGApF0GyXq0lDthuyXKTmtZ8k20NpYjr6Rw==}
     peerDependencies:
       preact: '>=10 || >= 11.0.0-0'
 
@@ -7483,7 +7483,7 @@ snapshots:
       image-size: 1.1.1
       jszip: 3.10.1
 
-  preact-render-to-string@6.6.3(preact@10.28.0):
+  preact-render-to-string@6.6.4(preact@10.28.0):
     dependencies:
       preact: 10.28.0
 
