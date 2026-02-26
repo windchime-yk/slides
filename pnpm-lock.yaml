@@ -19,10 +19,10 @@ importers:
         version: 0.25.0
       preact:
         specifier: ^10.22.0
-        version: 10.28.3
+        version: 10.28.4
       preact-render-to-string:
         specifier: ^6.5.5
-        version: 6.6.5(preact@10.28.3)
+        version: 6.6.5(preact@10.28.4)
       vue:
         specifier: ^3.4.22
         version: 3.5.28(typescript@5.6.3)
@@ -3019,8 +3019,8 @@ packages:
     peerDependencies:
       preact: '>=10 || >= 11.0.0-0'
 
-  preact@10.28.3:
-    resolution: {integrity: sha512-tCmoRkPQLpBeWzpmbhryairGnhW9tKV6c6gr/w+RhoRoKEJwsjzipwp//1oCpGPOchvSLaAPlpcJi9MwMmoPyA==}
+  preact@10.28.4:
+    resolution: {integrity: sha512-uKFfOHWuSNpRFVTnljsCluEFq57OKT+0QdOiQo8XWnQ/pSvg7OpX5eNOejELXJMWy+BwM2nobz0FkvzmnpCNsQ==}
 
   prettier@3.4.2:
     resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
@@ -7474,11 +7474,11 @@ snapshots:
       image-size: 1.1.1
       jszip: 3.10.1
 
-  preact-render-to-string@6.6.5(preact@10.28.3):
+  preact-render-to-string@6.6.5(preact@10.28.4):
     dependencies:
-      preact: 10.28.3
+      preact: 10.28.4
 
-  preact@10.28.3: {}
+  preact@10.28.4: {}
 
   prettier@3.4.2: {}
 
