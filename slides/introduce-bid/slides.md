@@ -99,7 +99,7 @@ transition: fade-out
 - 普通名詞だけでも、Googleは名詞でmacOS日本語入力システムは普通名詞とバラバラ
 - 各IMEの品詞がどれくらい統一できるか表を作る必要があった
 
-![Google日本語入力やmacOS日本語入力システム、Microsoft IMEの品詞の名付け方の違いを表した表](/name-sheet.png)
+![Google日本語入力やmacOS日本語入力システム、Microsoft IMEの品詞の名付け方の違いを表した表](./public/name-sheet.png)
 
 <!--
 - 調べた結果として、辞書フォーマットが全然統一されていないことがわかりました
