@@ -7,7 +7,7 @@
   "scripts": {
     "create-slide": "deno run --allow-run=pnpm,deno --allow-write --allow-read --allow-env --no-lock scripts/create.ts",
     "dev": "deno run --allow-run=pnpm --allow-read --allow-env --no-lock scripts/dev.ts",
-    "build": "rimraf dist && pnpm -r build && tsx index.tsx",
+    "build": "rimraf dist && pnpm -r --workspace-concurrency=1 build && tsx index.tsx",
     "preview": "live-server dist/index.html",
     "export": "pnpm -r export",
     "fmt": "deno fmt --ignore=README.md,*/**/*.md"
