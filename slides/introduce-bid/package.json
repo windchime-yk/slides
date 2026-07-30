@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "slidev --open",
-    "build": "slidev build --base /introduce-bid --out ../../dist/introduce-bid",
+    "build": "slidev build --base /introduce-bid --router-mode hash --out ../../dist/introduce-bid",
     "export": "slidev export",
     "ogp": "slidev export --format png --range 1 --per-slide --output .ogp-tmp"
   }

@@ -33,8 +33,10 @@ const packageJsonTemplate = {
   "private": true,
   "scripts": {
     "dev": "slidev --open",
+    // Cloudflare Pagesでは_redirectsが効かず/<slug>/1のようなURLが404になるため、
+    // ハッシュルーター(/<slug>/#/1)にして常に既存のindex.htmlへ着地させる
     "build":
-      `slidev build --base /${projectName} --out ../../dist/${projectName}`,
+      `slidev build --base /${projectName} --router-mode hash --out ../../dist/${projectName}`,
     "export": "slidev export",
     "ogp": "slidev export --format png --range 1 --per-slide --output .ogp-tmp",
   },
