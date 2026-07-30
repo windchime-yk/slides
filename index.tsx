@@ -1,5 +1,5 @@
 /** @jsx h */
-import { readdirSync, readFileSync, writeFile } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { h } from "preact";
 import { render } from "preact-render-to-string";
 
@@ -75,6 +75,13 @@ const jsx = () => (
 
 const htmlString = render(jsx());
 
-writeFile("dist/index.html", `<!DOCTYPE html>${htmlString}`, "utf8", (err) => {
-  console.error(err);
-});
+writeFileSync("dist/index.html", `<!DOCTYPE html>${htmlString}`, "utf8");
+
+// Cloudflare Pagesは出力ルートの_redirectsしか読まない。slidevが各デッキに吐く
+// dist/<slug>/_redirectsは無視されるため、スライド番号付きURL(/<slug>/3)が404になる。
+// OGPのクローラーも404だとカードを出さないので、ここで全デッキ分をまとめて出力する
+const redirects = getSlideName()
+  .map((slide) => `/${slide.slug}/*    /${slide.slug}/index.html   200`)
+  .join("\n");
+
+writeFileSync("dist/_redirects", `${redirects}\n`, "utf8");
