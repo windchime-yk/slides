@@ -6,4 +6,5 @@ dist
 .remote-assets
 components.d.ts
 /slides/*/slides-export.pdf
+/slides/*/.ogp-tmp
 /slides/*/index.html

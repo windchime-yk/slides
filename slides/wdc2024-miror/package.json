@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "slidev --open",
-    "build": "slidev build --base /wdc2024-miror --out ../../dist/wdc2024-miror",
-    "export": "slidev export"
+    "build": "slidev build --base /wdc2024-miror --router-mode hash --out ../../dist/wdc2024-miror",
+    "export": "slidev export",
+    "ogp": "slidev export --format png --range 1 --per-slide --output .ogp-tmp"
   }
 }

@@ -16,6 +16,19 @@ drawings:
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
+# タイトルに " - Slidev" が付かないようにする
+titleTemplate: '%s'
+# OGP。og-image.pngは`pnpm ogp`で1枚目から生成し、public/に置いてコミットしている
+seoMeta:
+  ogTitle: WinterCG Runtime Keysについて
+  ogDescription: Web Developer Conference 2024の1分LT枠で話したWinterCG Runtime Keysのミラースライドです。
+  ogImage: https://slides.whyk.dev/wdc2024-miror/og-image.png
+  ogUrl: https://slides.whyk.dev/wdc2024-miror/
+  twitterCard: summary_large_image
+  twitterTitle: WinterCG Runtime Keysについて
+  twitterDescription: Web Developer Conference 2024の1分LT枠で話したWinterCG Runtime Keysのミラースライドです。
+  twitterImage: https://slides.whyk.dev/wdc2024-miror/og-image.png
+  twitterUrl: https://slides.whyk.dev/wdc2024-miror/
 ---
 
 # WinterCG Runtime Keysについて

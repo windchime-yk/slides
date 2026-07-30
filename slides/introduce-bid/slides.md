@@ -16,6 +16,19 @@ drawings:
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/guide/syntax#mdc-syntax
 mdc: true
+# タイトルに " - Slidev" が付かないようにする
+titleTemplate: '%s'
+# OGP。og-image.pngは`pnpm ogp`で1枚目から生成し、public/に置いてコミットしている
+seoMeta:
+  ogTitle: DenoでIMEユーザー辞書を統一的に出力するツールを作った
+  ogDescription: 'toranoana.deno #16で発表したLT資料。bidという、IMEユーザー辞書を統一するプロジェクトについて話しています。'
+  ogImage: https://slides.whyk.dev/introduce-bid/og-image.png
+  ogUrl: https://slides.whyk.dev/introduce-bid/
+  twitterCard: summary_large_image
+  twitterTitle: DenoでIMEユーザー辞書を統一的に出力するツールを作った
+  twitterDescription: 'toranoana.deno #16で発表したLT資料。bidという、IMEユーザー辞書を統一するプロジェクトについて話しています。'
+  twitterImage: https://slides.whyk.dev/introduce-bid/og-image.png
+  twitterUrl: https://slides.whyk.dev/introduce-bid/
 ---
 
 # DenoでIMEユーザー辞書を統一的に出力するツールを作った
