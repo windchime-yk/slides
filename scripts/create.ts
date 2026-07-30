@@ -36,6 +36,7 @@ const packageJsonTemplate = {
     "build":
       `slidev build --base /${projectName} --out ../../dist/${projectName}`,
     "export": "slidev export",
+    "ogp": "slidev export --format png --range 1 --per-slide --output .ogp-tmp",
   },
 };
 const encoder = new TextEncoder();
@@ -47,4 +48,39 @@ await $`deno fmt package.json`;
 successLog("package.jsonの修正完了");
 await $`pnpm i`;
 successLog("依存関係のインストール完了");
+$.logGroupEnd();
+
+$.logGroup("OGP設定の追加");
+// slideTitleに#や:が含まれてもYAMLとして壊れないよう、二重引用符スカラーで埋め込む
+const yamlString = (value: string) => JSON.stringify(value);
+const slideUrl = `https://slides.whyk.dev/${projectName}/`;
+const seoMeta = `# タイトルに " - Slidev" が付かないようにする
+titleTemplate: '%s'
+# OGP。og-image.pngは\`pnpm ogp\`で1枚目から生成し、public/に置いてコミットしている
+seoMeta:
+  ogTitle: ${yamlString(slideTitle)}
+  ogDescription: ${yamlString(slideTitle)}
+  ogImage: ${slideUrl}og-image.png
+  ogUrl: ${slideUrl}
+  twitterCard: summary_large_image
+  twitterTitle: ${yamlString(slideTitle)}
+  twitterDescription: ${yamlString(slideTitle)}
+  twitterImage: ${slideUrl}og-image.png
+  twitterUrl: ${slideUrl}
+`;
+const slidesMarkdown = await Deno.readTextFile("slides.md");
+// 先頭のheadmatterを閉じる`---`の直前に差し込む
+const headmatterEnd = slidesMarkdown.indexOf("\n---", "---".length);
+await Deno.writeTextFile(
+  "slides.md",
+  `${slidesMarkdown.slice(0, headmatterEnd + 1)}${seoMeta}${
+    slidesMarkdown.slice(headmatterEnd + 1)
+  }`,
+);
+successLog("slides.mdへのseoMeta追加完了");
+await $`pnpm ogp`;
+await Deno.mkdir("public", { recursive: true });
+await Deno.rename(".ogp-tmp/01.png", "public/og-image.png");
+await Deno.remove(".ogp-tmp", { recursive: true });
+successLog("public/og-image.pngの生成完了");
 $.logGroupEnd();

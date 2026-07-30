@@ -3,6 +3,10 @@ import { readdirSync, readFileSync, writeFile } from "node:fs";
 import { h } from "preact";
 import { render } from "preact-render-to-string";
 
+const SITE_URL = "https://slides.whyk.dev";
+const SITE_DESCRIPTION =
+  "WhyKが登壇などに利用したスライドを掲載しています。スライドはすべてSlidevで制作されています。";
+
 const getSlideName = () => {
   const dirents = readdirSync("./slides", { withFileTypes: true });
   const dirs = dirents.filter((dirent) => dirent.isDirectory()).map(
@@ -26,6 +30,15 @@ const jsx = () => (
     <head>
       <title>WhyK Slides</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content={SITE_DESCRIPTION} />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="WhyK Slides" />
+      <meta property="og:title" content="WhyK Slides" />
+      <meta property="og:description" content={SITE_DESCRIPTION} />
+      <meta property="og:url" content={`${SITE_URL}/`} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="WhyK Slides" />
+      <meta name="twitter:description" content={SITE_DESCRIPTION} />
       <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
       <link
         rel="stylesheet"
