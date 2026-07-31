@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "slides",
+  "compatibility_date": "2026-07-31",
+  // 各デッキはハッシュルーター(`--router-mode hash`)でビルドしているため、
+  // サーバーに届くのは`/<slug>/`だけ。静的アセットだけで完結するのでWorkerスクリプトは持たない
+  "assets": {
+    "directory": "./dist",
+    // `/<slug>`を`/<slug>/index.html`として解決する。既定値だが移行の肝なので明示している
+    "html_handling": "auto-trailing-slash",
+    // 最も近い404.htmlを404で返す。slidevが`dist/<slug>/404.html`を吐くのでPagesと同じ挙動になる。
+    // `single-page-application`はルートの/index.htmlを200で返す仕様でデッキのサブディレクトリを見ないため使えない
+    "not_found_handling": "404-page"
+  }
+}
