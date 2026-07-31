@@ -3,6 +3,7 @@ node_modules
 dist
 *.local
 .vite-inspect
+.wrangler
 .remote-assets
 components.d.ts
 /slides/*/slides-export.pdf
