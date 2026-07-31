@@ -70,7 +70,16 @@ seoMeta:
   twitterImage: ${slideUrl}og-image.png
   twitterUrl: ${slideUrl}
 `;
-const slidesMarkdown = await Deno.readTextFile("slides.md");
+// slidevのテンプレートは`download: true`で始まるが、trueだとビルド時にPDF exportが走り
+// chromiumが必要になる。Cloudflare Workersのビルドイメージには共有ライブラリがなく起動できない
+const downloadSetting =
+  `# trueにするとビルド時にPDF exportが走りchromiumが必要になる。
+# Cloudflare Workersのビルドイメージには共有ライブラリがなく起動できないため無効化している
+download: false`;
+const slidesMarkdown = (await Deno.readTextFile("slides.md")).replace(
+  /^download: true$/m,
+  downloadSetting,
+);
 // 先頭のheadmatterを閉じる`---`の直前に差し込む
 const headmatterEnd = slidesMarkdown.indexOf("\n---", "---".length);
 await Deno.writeTextFile(
