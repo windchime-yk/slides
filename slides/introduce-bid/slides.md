@@ -1,6 +1,8 @@
 ---
 slidev: true
-download: true
+# trueにするとビルド時にPDF exportが走りchromiumが必要になる。
+# Cloudflare Workersのビルドイメージには共有ライブラリがなく起動できないため無効化している
+download: false
 title: DenoでIMEユーザー辞書を統一的に出力するツールを作った
 info: |
   toranoana.deno #16で発表するLT資料です。

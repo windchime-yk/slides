@@ -1,6 +1,8 @@
 ---
 slidev: true
-download: true
+# trueにするとビルド時にPDF exportが走りchromiumが必要になる。
+# Cloudflare Workersのビルドイメージには共有ライブラリがなく起動できないため無効化している
+download: false
 # You can also start simply with 'default'
 theme: default
 # some information about your slides (markdown enabled)
