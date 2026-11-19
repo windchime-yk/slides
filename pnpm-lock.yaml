@@ -16,10 +16,10 @@ importers:
         version: 0.25.0
       preact:
         specifier: ^10.29.7
-        version: 10.29.8(preact-render-to-string@6.8.2)
+        version: 10.29.8(preact-render-to-string@6.8.3)
       preact-render-to-string:
         specifier: ^6.5.5
-        version: 6.8.2(preact@10.29.8)
+        version: 6.8.3(preact@10.29.8)
       vue:
         specifier: ^3.5.40
         version: 3.5.45(typescript@6.0.3)
@@ -2908,8 +2908,8 @@ packages:
   pptxgenjs@4.0.1:
     resolution: {integrity: sha512-TeJISr8wouAuXw4C1F/mC33xbZs/FuEG6nH9FG1Zj+nuPcGMP5YRHl6X+j3HSUnS1f3at6k75ZZXPMZlA5Lj9A==}
 
-  preact-render-to-string@6.8.2:
-    resolution: {integrity: sha512-Hdx7cKD3AMYgt795TdddBpUbuGEFoL/VeA6s7VrBt9Gjt0r6rCy5wMp5xkDjQ9cbKj62frHsEx1x8yV6EjoOpg==}
+  preact-render-to-string@6.8.3:
+    resolution: {integrity: sha512-yg04edGH7f5yfBUV4uyL2brzPB3e26AimLO5WNfUtwoCv8LBJ7Z+dElG8P5v+o8UqMUM6kZhnn4I/HEXNyP0ZQ==}
     peerDependencies:
       preact: '>=10 || >= 11.0.0-0'
 
@@ -6858,13 +6858,13 @@ snapshots:
       image-size: 1.2.1
       jszip: 3.10.1
 
-  preact-render-to-string@6.8.2(preact@10.29.8):
+  preact-render-to-string@6.8.3(preact@10.29.8):
     dependencies:
-      preact: 10.29.8(preact-render-to-string@6.8.2)
+      preact: 10.29.8(preact-render-to-string@6.8.3)
 
-  preact@10.29.8(preact-render-to-string@6.8.2):
+  preact@10.29.8(preact-render-to-string@6.8.3):
     optionalDependencies:
-      preact-render-to-string: 6.8.2(preact@10.29.8)
+      preact-render-to-string: 6.8.3(preact@10.29.8)
 
   prism-theme-vars@0.2.5: {}
 
